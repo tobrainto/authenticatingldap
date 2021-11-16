@@ -1,0 +1,182 @@
+#!RESULT ERROR
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.599
+#!ERROR  [LDAP result code 69 - objectClassModsProhibited] structural object class modification from 'organization' to 'domain' not allowed
+dn: dc=springframework,dc=org
+objectclass: top
+objectclass: domain
+objectclass: extensibleObject
+dc: springframework
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.600
+dn: ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.602
+dn: ou=subgroups,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: subgroups
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.603
+dn: ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.605
+dn: ou=space cadets,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: space cadets
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.607
+dn: ou=\"quoted people\",dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: "quoted people"
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.608
+dn: ou=otherpeople,dc=springframework,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: otherpeople
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.610
+dn: uid=ben,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Ben Alex
+sn: Alex
+uid: ben
+userPassword: $2a$10$c6bSeWPhg06xB1lvmaWNNe4NROmZiSpYhlocU/98HNr2MhIOiSt36
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.612
+dn: uid=bob,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Bob Hamilton
+sn: Hamilton
+uid: bob
+userPassword: bobspassword
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.613
+dn: uid=joe,ou=otherpeople,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Joe Smeth
+sn: Smeth
+uid: joe
+userPassword: joespassword
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.615
+dn: cn=mouse\, jerry,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Mouse, Jerry
+sn: Mouse
+uid: jerry
+userPassword: jerryspassword
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.617
+dn: cn=slash/guy,ou=people,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: slash/guy
+sn: Slash
+uid: slashguy
+userPassword: slashguyspassword
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.618
+dn: cn=quote\"guy,ou=\"quoted people\",dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: quote\"guy
+sn: Quote
+uid: quoteguy
+userPassword: quoteguyspassword
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.620
+dn: uid=space cadet,ou=space cadets,dc=springframework,dc=org
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Space Cadet
+sn: Cadet
+uid: space cadet
+userPassword: spacecadetspassword
+
+
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.621
+dn: cn=developers,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: developers
+ou: developer
+uniqueMember: uid=ben,ou=people,dc=springframework,dc=org
+uniqueMember: uid=bob,ou=people,dc=springframework,dc=org
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.623
+dn: cn=managers,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: managers
+ou: manager
+uniqueMember: uid=ben,ou=people,dc=springframework,dc=org
+uniqueMember: cn=mouse\, jerry,ou=people,dc=springframework,dc=org
+
+#!RESULT OK
+#!CONNECTION ldap://localhost:389
+#!DATE 2021-11-12T14:54:48.624
+dn: cn=submanagers,ou=subgroups,ou=groups,dc=springframework,dc=org
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: submanagers
+ou: submanager
+uniqueMember: uid=ben,ou=people,dc=springframework,dc=org
